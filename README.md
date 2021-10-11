@@ -1,3 +1,5 @@
+# Rails API docker template with postgres and rspec 
+
 ## Generate a new rails app 
 
 To generate a new rails api app with postgres and without minitest, run:

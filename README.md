@@ -39,6 +39,8 @@ test:
   database: myapp_test
 ```
 
+Be aware that you can (and should) change your database names but be sure to update also any reference to those names on your docker-compose files. 
+
 Create the database:
 
 ```shell

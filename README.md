@@ -54,11 +54,11 @@ docker-compose run web rake db:create
 
 To install rspec, add the 'rspec-rails' gem to your Gemfile:
 
+```shell
 group :development, :test do
-  ```shell
   gem 'rspec-rails', '~> 5.0.0'
-  ```
 end
+```
 
 Followed by the install commands:
 
@@ -69,12 +69,12 @@ docker-compose run web rails generate rspec:install
 
 Finally, rebuild your docker image based on the Gemfile changes: 
 ```shell
-docker-compose build`
+docker-compose build
 ```
 
 ## To start the tdd container: 
 
-```
+```shell
 docker-compose -f docker-compose.tdd.yml up
 ```
 
@@ -82,7 +82,9 @@ To run it in detach mode add the `--detach` flag.
 
 ## To run the tests: 
 
+```shell
 docker-compose -f docker-compose.tdd.yml run tdd rspec spec
+```
 
 ## To boot the web app
 

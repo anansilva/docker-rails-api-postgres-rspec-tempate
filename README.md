@@ -1,3 +1,5 @@
+## Generate a new rails app 
+
 To generate a new rails api app with postgres and without minitest, run:
 
 ```shell
@@ -16,8 +18,9 @@ This is what happens when you run this command:
 docker-compose build
 ```
 
-Adjust the `config/database.yml`. Instead of pointing to localhost (rails
-default) it should point to the `db` container. The username and password also
+## Adjust the `config/database.yml`
+
+Instead of pointing to localhost (rails default) it should point to the `db` container. The username and password also
 need to be adjusted to the defaults set by the `postgres` image.
 
 ```
@@ -41,13 +44,47 @@ test:
 
 Be aware that you can (and should) change your database names but be sure to update also any reference to those names on your docker-compose files. 
 
-Create the database:
+## Create the database
 
 ```shell
 docker-compose run web rake db:create
 ```
 
-And, finally, you can boot the app:
+## Install rspec
+
+To install rspec, add the 'rspec-rails' gem to your Gemfile:
+
+group :development, :test do
+  ```shell
+  gem 'rspec-rails', '~> 5.0.0'
+  ```
+end
+
+Followed by the install commands:
+
+```shell
+docker-compose run web bundle install
+docker-compose run web rails generate rspec:install
+```
+
+Finally, rebuild your docker image based on the Gemfile changes: 
+```shell
+docker-compose build`
+```
+
+## To start the tdd container: 
+
+```
+docker-compose -f docker-compose.tdd.yml up
+```
+
+To run it in detach mode add the `--detach` flag.
+
+## To run the tests: 
+
+docker-compose -f docker-compose.tdd.yml run tdd rspec spec
+
+## To boot the web app
 
 ```shell
 docker-compose up

@@ -10,9 +10,6 @@ This is what happens when you run this command:
 2. It creates a new container based on that image
 3. Runs `rails new` inside the container
 
-If you work with minitest, you can remove the `-T` flag from the command. I
-removed it so I can later install rspec.
-
 `rails new` updates the Gemfile, so we will need to build the image again:
 
 ```shell
